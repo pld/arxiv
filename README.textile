@@ -7,7 +7,7 @@ h2. Installation
 
 * install the gem
 
-@gem install arxiv@
+@gem install arxiv-h@
 
 h2. Example
 

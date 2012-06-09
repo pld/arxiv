@@ -6,7 +6,7 @@ require 'nokogiri'
 require 'uri'
 
 
-Result = Struct.new :title, :abstract, :url, :date, :authors
+ArxivResult = Struct.new :title, :abstract, :url, :date, :authors
 
 
 class Arxiv
@@ -36,7 +36,7 @@ class Arxiv
     doc = Nokogiri::HTML(response.body)
     doc.xpath('//feed/entry').map do |item|
       authors = item.xpath('author').map { |author| author.xpath('name').text }
-      Result.new(
+      ArxivResult.new(
         item.xpath('title').text,
         item.xpath('summary').text.gsub("\n", ' ').strip,
         item.xpath('id').text,
